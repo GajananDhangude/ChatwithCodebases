@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+sentence-transformers
+faiss-cpu
+pydantic
+requests
+python-dotenv
+tree-sitter-language-pack
