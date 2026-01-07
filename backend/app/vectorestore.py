@@ -20,3 +20,5 @@ class VectoreStore():
         query_enb = self.model.encode([query])
         _ , idxs = self.index.search(np.array(query_enb) , k)
         return [self.documents[i] for i in idxs[0]]
+    
+    
