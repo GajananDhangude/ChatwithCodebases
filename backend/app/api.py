@@ -7,6 +7,10 @@ from prompt import CODE_QA_PROMPT
 from ingestion import ingest_repo
 from load_repo import load_repository
 from main import build_context
+import uvicorn
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 
@@ -35,6 +39,7 @@ def chat(request: ChatRequest):
     store.add(docs)
 
 
+
     results = store.search(request.question, k=2)
     context = build_context(results)
 
@@ -45,3 +50,8 @@ def chat(request: ChatRequest):
 
 
     return ChatResponse(answer=answer)
+
+
+if __name__ =="__main__":
+
+    uvicorn.run(app , host='localhost' ,  port=8080)
