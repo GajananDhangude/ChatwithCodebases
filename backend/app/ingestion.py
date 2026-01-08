@@ -1,6 +1,5 @@
 from pathlib import Path
 from git import Repo
-import shutil
 import os
 
 def get_repo_name_from_url(repo_url:str) -> str:
@@ -18,7 +17,8 @@ def ingest_repo(repo_url:str) -> Path:
     repo_dir = base_dir / repo_name
 
     if repo_dir.exists():
-        shutil.rmtree(repo_dir)
+        print(f"[INFO] Repo already exists at {repo_dir}, reusing it")
+        return repo_dir
 
 
     Repo.clone_from(repo_url , repo_dir)
@@ -27,10 +27,3 @@ def ingest_repo(repo_url:str) -> Path:
 
 
 
-
-
-
-
-if __name__ =="__main__":
-
-    ingest_repo("https://github.com/Rhinks/knowthecode")
